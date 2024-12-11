@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>将棋解説ジェネレーター</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>将棋解説ジェネレーター</h1>
+    <form method="POST">
+        <label for="youtube_url">YouTube URL:</label>
+        <input type="text" name="youtube_url" id="youtube_url" required>
+        
+        <label for="level">解説レベル:</label>
+        <select name="level" id="level">
+            <option value="初心者">初心者向け</option>
+            <option value="中級者">中級者向け</option>
+            <option value="上級者">上級者向け</option>
+        </select>
+        
+        <label for="content_type">生成内容:</label>
+        <select name="content_type" id="content_type">
+            <option value="ルール">ルールの解説</option>
+            <option value="見どころ">試合の見どころ</option>
+            <option value="選手">選手の解説</option>
+            <option value="試合内容">試合内容の解説</option>
+        </select>
+        
+        <input type="submit" value="解説を生成">
+    </form>
+    
+    {% if error %}
+    <div class="error">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+    
+    {% if explanation %}
+    <div class="explanation">
+        <h2>生成された解説:</h2>
+        <p>{{ explanation }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
