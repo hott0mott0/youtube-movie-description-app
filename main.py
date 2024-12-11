@@ -35,7 +35,7 @@ def get_transcript(video_id):
 
 # 解説生成関数
 def generate_commentary(transcript, level, content_type):
-    prompt = f"以下の競馬レースの{content_type}について{level}向けに解説してください：\n\n{transcript[:4000]}"  # 文字数制限
+    prompt = f"以下の将棋の対局の{content_type}について{level}向けに解説してください：\n\n{transcript[:4000]}"  # 文字数制限
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
